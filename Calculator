@@ -1,0 +1,348 @@
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+
+public class Calculator implements ActionListener {
+	boolean isOperatorClicked=false;
+	boolean isAddOperatorClicked=false;	
+	boolean isSubOperatorClicked=false;
+	boolean isMulOperatorClicked=false;
+	boolean isDivOperatorClicked=false;
+
+
+
+	
+	String oldValue;
+	JFrame jf;
+	JLabel displayLabel;
+	JButton sevenButon;
+	JButton eightButon;
+	JButton nineButon;
+	JButton sixButon;
+	JButton fiveButon;
+	JButton fourButon;
+	JButton threeButon;
+	JButton twoButon;
+	JButton oneButon;
+	JButton divisionButon;
+	JButton multiplicationButon;
+	JButton addButon;
+	JButton subButon;
+	JButton dotButon;
+	JButton zeroButon;
+	JButton equalButon,clearButon;
+	public Calculator() {
+		jf=new JFrame("CALCULTOR");
+		jf.setLayout(null);
+		jf.setSize(500,600);
+		jf.setLocation(800,100);
+		displayLabel=new JLabel();
+		displayLabel.setFont(new Font("Serif", Font.BOLD, 22));
+		displayLabel.setBounds(30,40,280,70);
+		displayLabel.setBackground(Color.white);
+		displayLabel.setOpaque(true);
+		displayLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		displayLabel.setForeground(Color.blue);
+		jf.add(displayLabel);
+		
+		sevenButon=new JButton("7");
+		sevenButon.setBounds(30,130,80,80);
+		
+		sevenButon.setFont(new Font("Arial", Font.BOLD, 22));
+		sevenButon.addActionListener(this);
+		jf.add(sevenButon);
+		
+		 eightButon=new JButton("8");
+		eightButon.setBounds(130,130,80,80);
+		eightButon.addActionListener(this);
+		eightButon.setFont(new Font("Arial", Font.BOLD, 22));
+		jf.add(eightButon);
+		
+		nineButon=new JButton("9");
+		nineButon.setBounds(230,130,80,80);
+		nineButon.addActionListener(this);
+		nineButon.setFont(new Font("Arial", Font.BOLD, 22));
+		jf.add(nineButon);
+		
+		divisionButon=new JButton("/");
+		divisionButon.setBounds(330,130,80,80);
+		divisionButon.addActionListener(this);
+		divisionButon.setFont(new Font("Arial", Font.BOLD, 22));
+		jf.add(divisionButon);
+		
+		multiplicationButon=new JButton("*");
+		multiplicationButon.setBounds(330,230,80,80);
+		multiplicationButon.addActionListener(this);
+		multiplicationButon.setFont(new Font("Arial", Font.BOLD, 22));
+		jf.add(multiplicationButon);
+		
+		 addButon=new JButton("+");
+		addButon.setBounds(330,330,80,80);
+		addButon.addActionListener(this);
+		addButon.setFont(new Font("Arial", Font.BOLD, 22));
+		jf.add(addButon);
+		
+		subButon=new JButton("-");
+		subButon.setBounds(330,430,80,80);
+		subButon.addActionListener(this);
+		subButon.setFont(new Font("Arial", Font.BOLD, 22));
+		jf.add(subButon);
+		
+		fourButon=new JButton("4");
+		fourButon.setBounds(30,230,80,80);
+		fourButon.addActionListener(this);
+		fourButon.setFont(new Font("Arial", Font.BOLD, 22));
+		jf.add(fourButon);
+		
+		fiveButon=new JButton("5");
+		fiveButon.setBounds(130,230,80,80);
+		fiveButon.addActionListener(this);
+		fiveButon.setFont(new Font("Arial", Font.BOLD, 22));
+		jf.add(fiveButon);
+		
+		sixButon=new JButton("6");
+		sixButon.setBounds(230,230,80,80);
+		sixButon.addActionListener(this);
+		sixButon.setFont(new Font("Arial", Font.BOLD, 22));
+		jf.add(sixButon);
+		
+		 threeButon=new JButton("3");
+		threeButon.setBounds(30,330,80,80);
+		threeButon.addActionListener(this);
+		threeButon.setFont(new Font("Arial", Font.BOLD, 22));
+		jf.add(threeButon);
+		
+		twoButon=new JButton("2");
+		twoButon.setBounds(130,330,80,80);
+		twoButon.addActionListener(this);
+		twoButon.setFont(new Font("Arial", Font.BOLD, 22));
+		jf.add(twoButon);
+		
+		oneButon=new JButton("1");
+		oneButon.setBounds(230,330,80,80);
+		oneButon.addActionListener(this);
+		oneButon.setFont(new Font("Arial", Font.BOLD, 22));
+		jf.add(oneButon);
+		
+		dotButon=new JButton(".");
+		dotButon.setBounds(30,430,80,80);
+		dotButon.addActionListener(this);
+		dotButon.setFont(new Font("Arial", Font.BOLD, 22));
+		jf.add(dotButon);
+		
+		 zeroButon=new JButton("0");
+		zeroButon.setBounds(130,430,80,80);
+		zeroButon.addActionListener(this);
+		zeroButon.setFont(new Font("Arial", Font.BOLD, 22));
+		jf.add(zeroButon);
+		
+		 equalButon=new JButton("=");
+		equalButon.setBounds(230,430,80,80);
+		equalButon.addActionListener(this);
+		equalButon.setFont(new Font("Arial", Font.BOLD, 22));
+		jf.add(equalButon);
+		
+		clearButon=new JButton("C");
+		clearButon.setBounds(330,40,80,80);
+		clearButon.addActionListener(this);
+		clearButon.setFont(new Font("Arial", Font.BOLD, 22));
+		jf.add(clearButon);
+		
+		
+		
+		jf.setVisible(true);
+		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	public static void main(String[] args) {
+		new Calculator();
+		
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		jf.getContentPane().setBackground(Color.red);
+		if(e.getSource()==sevenButon) {
+			
+			if(isOperatorClicked) {
+				displayLabel.setText("7");
+				isOperatorClicked=false;
+				}
+			else {
+				displayLabel.setText(displayLabel.getText()+"7");
+			}
+			
+			
+		}
+		else if(e.getSource()==eightButon) {
+			if(isOperatorClicked) {
+				displayLabel.setText("8");
+				isOperatorClicked=false;
+				}
+			else {
+				displayLabel.setText(displayLabel.getText()+"8");
+			}
+			
+		}
+		else if(e.getSource()==nineButon) {
+			if(isOperatorClicked) {
+				displayLabel.setText("9");
+				isOperatorClicked=false;
+				}
+			else {
+				displayLabel.setText(displayLabel.getText()+"9");
+			}
+			
+		}
+		else if(e.getSource()==sixButon) {
+			if(isOperatorClicked) {
+				displayLabel.setText("6");
+				isOperatorClicked=false;
+				}
+			else {
+				displayLabel.setText(displayLabel.getText()+"6");
+			}
+			
+		}
+		else if(e.getSource()==fiveButon) {
+			if(isOperatorClicked) {
+				displayLabel.setText("5");
+				isOperatorClicked=false;
+				}
+			else {
+				displayLabel.setText(displayLabel.getText()+"5");
+			}
+			
+		}
+		else if(e.getSource()==fourButon) {
+			if(isOperatorClicked) {
+				displayLabel.setText("4");
+				isOperatorClicked=false;
+				}
+			else {
+				displayLabel.setText(displayLabel.getText()+"4");
+			}
+		}
+		else if(e.getSource()==threeButon) {
+			if(isOperatorClicked) {
+				displayLabel.setText("3");
+				isOperatorClicked=false;
+				}
+			else {
+				displayLabel.setText(displayLabel.getText()+"3");
+			}
+			
+		}
+		else if(e.getSource()==twoButon) {
+			if(isOperatorClicked) {
+				displayLabel.setText("2");
+				isOperatorClicked=false;
+				}
+			else {
+				displayLabel.setText(displayLabel.getText()+"2");
+			}
+			
+		}
+		else if(e.getSource()==oneButon) {
+			if(isOperatorClicked) {
+				displayLabel.setText("1");
+				isOperatorClicked=false;
+				}
+			else {
+				displayLabel.setText(displayLabel.getText()+"1");
+			}
+			
+		}
+		else if(e.getSource()==zeroButon) {
+			if(isOperatorClicked) {
+				displayLabel.setText("0");
+				isOperatorClicked=false;
+				}
+			else {
+				displayLabel.setText(displayLabel.getText()+"0");
+			}
+			
+		}
+		else if(e.getSource()==divisionButon) {
+			isOperatorClicked=true;
+			isDivOperatorClicked=true;
+			oldValue=displayLabel.getText();
+//			displayLabel.setText("/");
+			
+		}
+		else if(e.getSource()==multiplicationButon) {
+			isOperatorClicked=true;
+			isMulOperatorClicked=true;
+			oldValue=displayLabel.getText();
+//			isOperatorClicked=true;
+//			oldValue=displayLabel.getText();
+////			displayLabel.setText("*");
+			
+		}
+		else if(e.getSource()==addButon) {
+			isOperatorClicked=true;
+			isAddOperatorClicked=true;
+			oldValue=displayLabel.getText();
+//			displayLabel.setText("+");
+			
+		}
+		else if(e.getSource()==subButon) {
+			isOperatorClicked=true;
+			isSubOperatorClicked=true;
+			oldValue=displayLabel.getText();
+//			isOperatorClicked=true;
+//			oldValue=displayLabel.getText();
+//			displayLabel.setText("-");
+			
+		}
+		else if(e.getSource()==equalButon) {
+			jf.getContentPane().setBackground(Color.green);
+			String newValue=displayLabel.getText();
+			float oldValueF=Float.parseFloat(oldValue);
+			float newValueF=Float.parseFloat(newValue);
+//			float result=oldValueF+newValueF;
+//			displayLabel.setText(result+"");
+			if(isAddOperatorClicked) {
+				float result=oldValueF+newValueF;
+				displayLabel.setText(result+"");
+			}
+			else if(isSubOperatorClicked) {
+				float result=oldValueF-newValueF;
+				displayLabel.setText(result+"");
+			}
+			else if(isMulOperatorClicked) {
+				float result=oldValueF*newValueF;
+				displayLabel.setText(result+"");
+			}
+			else if(isDivOperatorClicked) {
+				if(newValueF==0) {
+					displayLabel.setText("Denominator Zero Error");
+
+				}
+				else {
+					float result=oldValueF/newValueF;
+					displayLabel.setText(result+"");
+				}
+				
+			}
+			
+			
+
+			
+		}
+		else if(e.getSource()==clearButon) {
+			displayLabel.setText("");
+			
+		}
+		else if(e.getSource()==dotButon) {
+			displayLabel.setText(displayLabel.getText()+".");
+			
+		}
+		
+	}
+
+}
